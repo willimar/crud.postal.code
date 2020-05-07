@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BadRobot" Version="3.0.1" />
+    <PackageReference Include="crud.api.core" Version="1.2.1.5" />
+  </ItemGroup>
+
+</Project>
