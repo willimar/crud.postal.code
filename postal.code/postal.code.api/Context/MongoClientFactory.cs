@@ -24,8 +24,9 @@ namespace postal.code.api.Context
             }
             else
             {
-                connectionString = $"mongodb+srv://{Program.DataBaseUser}:{Program.DataBasePws}@{Program.DataBaseHost}/{Program.DataBaseName}?retryWrites=true&w=majority";
+                //connectionString = $"mongodb+srv://{Program.DataBaseUser}:{Program.DataBasePws}@{Program.DataBaseHost}/{Program.DataBaseName}?retryWrites=true&w=majority&ssl=false";
                 //connectionString = $"mongodb://{Program.DataBaseUser}:{Program.DataBasePws}@{Program.DataBaseHost}:{Program.DataBasePort}/?authSource={Program.DataBaseAuth}&readPreference=primary&appname=postal.code.api&ssl=false";
+                connectionString = $"mongodb+srv://{Program.DataBaseUser}:{Program.DataBasePws}@{Program.DataBaseHost}/{Program.DataBaseAuth}?retryWrites=true&w=majority";
             }
 
             return connectionString;

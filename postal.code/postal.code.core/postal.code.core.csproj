@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="BadRobot" Version="3.0.1" />
-    <PackageReference Include="crud.api.core" Version="1.2.1.5" />
+    <PackageReference Include="crud.api.core" Version="1.2.2.1" />
   </ItemGroup>
 
 </Project>

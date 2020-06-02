@@ -38,7 +38,7 @@ namespace postal.code.api.Controllers
             try
             {
                 var entity = this._mapper.Map<Address>(address);
-                var result = this._service.AppenData(entity);
+                var result = this._service.SaveData(entity);
 
                 if (result.Any(r => r.Code.Equals(HandlesCode.Accepted) || r.Code.Equals(HandlesCode.Ok)))
                 {

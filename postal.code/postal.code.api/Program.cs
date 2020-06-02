@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using mc.cript;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -17,8 +18,8 @@ namespace postal.code.api
 
         public static string DataBaseHost { get { return GetConfig<string>("MongoDb", "Host"); } }
         public static int DataBasePort { get { return GetConfig<int>("MongoDb", "Port"); } }
-        public static string DataBaseUser { get { return GetConfig<string>("MongoDb", "User"); } }
-        public static string DataBasePws { get { return GetConfig<string>("MongoDb", "Password"); } }
+        internal static string DataBaseUser { get { return Cryptographer.Decrypt(GetConfig<string>("MongoDb", "User"), "fodão"); } }
+        internal static string DataBasePws { get { return Cryptographer.Decrypt(GetConfig<string>("MongoDb", "Password"), "fodão"); } }
         public static string DataBaseAuth { get { return GetConfig<string>("MongoDb", "Auth"); } }
         public static string DataBaseName { get { return GetConfig<string>("MongoDb", "DataBase"); } }
 
