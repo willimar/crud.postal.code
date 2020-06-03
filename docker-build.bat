@@ -7,3 +7,5 @@ docker tag postalcode-api registry.heroku.com/postalcode-api/web
 docker push registry.heroku.com/postalcode-api/web
 
 heroku container:release web -a postalcode-api
+
+heroku logs --tail --app postalcode-api
