@@ -10,17 +10,19 @@ namespace postal.code.api
     {
         public const string AllowSpecificOrigins = "_AllowSpecificOrigins";
 
+        private static object _lock;
+
         public static IConfiguration Configuration { get; set; }
 
-        public static string DataBaseHost { get { return GetConfig<string>("MongoDb", "Host"); } }
-        public static int DataBasePort { get { return GetConfig<int>("MongoDb", "Port"); } }
-        internal static string DataBaseUser { get { return Cryptographer.Decrypt(GetConfig<string>("MongoDb", "User"), "fodão"); } }
-        internal static string DataBasePws { get { return Cryptographer.Decrypt(GetConfig<string>("MongoDb", "Password"), "fodão"); } }
-        public static string DataBaseAuth { get { return GetConfig<string>("MongoDb", "Auth"); } }
-        public static string DataBaseName { get { return GetConfig<string>("MongoDb", "DataBase"); } }
+        public static string DataBaseHost { get { lock (_lock) { return GetConfig<string>("MongoDb", "Host"); } } }
+        public static int DataBasePort { get { lock (_lock) { return GetConfig<int>("MongoDb", "Port"); } } }
+        internal static string DataBaseUser { get { lock (_lock) { return Cryptographer.Decrypt(GetConfig<string>("MongoDb", "User"), "fodão"); } } }
+        internal static string DataBasePws { get { lock (_lock) { return Cryptographer.Decrypt(GetConfig<string>("MongoDb", "Password"), "fodão"); } } }
+        public static string DataBaseAuth { get { lock (_lock) { return GetConfig<string>("MongoDb", "Auth"); } } }
+        public static string DataBaseName { get { lock (_lock) { return GetConfig<string>("MongoDb", "DataBase"); } } }
 
-        public static TimeZoneInfo TimeZone { get { return TimeZoneInfo.FindSystemTimeZoneById(GetConfig<string>("Program", "TimeZone")); } }
-        public static DateTime UtcNow { get { return TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZone); } }
+        public static TimeZoneInfo TimeZone { get { lock (_lock) { return TimeZoneInfo.FindSystemTimeZoneById(GetConfig<string>("Program", "TimeZone")); } } }
+        public static DateTime UtcNow { get { lock (_lock) { return TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZone); } } }
 
         internal static TCast GetConfig<TCast>(string sectionName, string fieldName)
         {
@@ -38,6 +40,7 @@ namespace postal.code.api
 
         public static void Main(string[] args)
         {
+            _lock = new { id = Guid.NewGuid() };
             CreateHostBuilder(args).Build().Run();
         }
 

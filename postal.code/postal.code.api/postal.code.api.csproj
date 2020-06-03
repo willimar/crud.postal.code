@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageProjectUrl>https://github.com/willimar/crud.api</PackageProjectUrl>
     <RepositoryUrl>https://github.com/willimar/crud.api</RepositoryUrl>
-    <Version>1.0.1.3</Version>
+    <Version>1.0.1.4</Version>
     <Copyright>© 2020 Willimar</Copyright>
     <Description>Postal code service was developed to searsh address in basilian postal code. Used data base in mongodb but you need import data before use.</Description>
     <Product>Postal code service</Product>
