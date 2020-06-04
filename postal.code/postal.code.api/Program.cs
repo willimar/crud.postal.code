@@ -16,8 +16,8 @@ namespace postal.code.api
 
         public static string DataBaseHost { get { lock (_lock) { return GetConfig<string>("MongoDb", "Host"); } } }
         public static int DataBasePort { get { lock (_lock) { return GetConfig<int>("MongoDb", "Port"); } } }
-        internal static string DataBaseUser { get { lock (_lock) { return Cryptographer.Decrypt(GetConfig<string>("MongoDb", "User"), "fodão"); } } }
-        internal static string DataBasePws { get { lock (_lock) { return Cryptographer.Decrypt(GetConfig<string>("MongoDb", "Password"), "fodão"); } } }
+        internal static string DataBaseUser { get { lock (_lock) { return "atlasUser";/*Cryptographer.Decrypt(GetConfig<string>("MongoDb", "User"), "fodão");*/ } } }
+        internal static string DataBasePws { get { lock (_lock) { return "itsgallus"; /*Cryptographer.Decrypt(GetConfig<string>("MongoDb", "Password"), "fodão");*/ } } }
         public static string DataBaseAuth { get { lock (_lock) { return GetConfig<string>("MongoDb", "Auth"); } } }
         public static string DataBaseName { get { lock (_lock) { return GetConfig<string>("MongoDb", "DataBase"); } } }
 
